@@ -1,0 +1,108 @@
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 7rem 2rem 4rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  animation: fadeSlideUp 0.8s ease both;
+}
+
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--copper);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(1.4); }
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+  animation: fadeSlideUp 0.9s ease 0.1s both;
+}
+
+.hero-title .line-plain { color: var(--text); }
+
+.hero-title .line-gradient {
+  background: linear-gradient(135deg, var(--copper) 0%, var(--purple) 50%, var(--pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%,100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+.hero-sub {
+  max-width: 560px;
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  animation: fadeSlideUp 0.9s ease 0.2s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeSlideUp 0.9s ease 0.3s both;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  animation: fadeSlideUp 1s ease 0.8s both;
+}
+
+.scroll-arrow {
+  width: 20px; height: 20px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  animation: scrollBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%,100% { transform: rotate(45deg) translate(0,0); opacity: 0.6; }
+  50%      { transform: rotate(45deg) translate(4px,4px); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .hero-buttons { flex-direction: column; align-items: center; }
+}
