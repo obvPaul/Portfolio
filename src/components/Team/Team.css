@@ -9,10 +9,14 @@
   padding: 2.25rem 0;
   border-bottom: 1px solid var(--border);
   align-items: start;
-  transition: background var(--tr);
+  transition: background var(--tr), box-shadow 0.35s ease;
 }
 
-.team-row:hover { background: rgba(255,255,255,0.01); }
+/* Inset left-border appears on hover — no layout shift */
+.team-row:hover {
+  background: rgba(255,255,255,0.01);
+  box-shadow: inset 2px 0 0 var(--copper);
+}
 
 .team-row-left {
   display: flex;

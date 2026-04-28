@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import { useReveal } from '../../hooks/useReveal';
 import './Portfolio.css';
 
@@ -7,6 +8,38 @@ const ArrowIcon = () => (
     <path d="M7 7h10v10"/>
   </svg>
 );
+
+function CountUp({ target, duration = 700 }) {
+  const [value, setValue]       = useState(0);
+  const [started, setStarted]   = useState(false);
+  const spanRef                 = useRef(null);
+
+  useEffect(() => {
+    const el = spanRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStarted(true); io.disconnect(); } },
+      { threshold: 0.8 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    let startTs;
+    const step = (ts) => {
+      if (!startTs) startTs = ts;
+      const p = Math.min((ts - startTs) / duration, 1);
+      // ease-out curve
+      setValue(Math.round((1 - Math.pow(1 - p, 3)) * target));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [started, target, duration]);
+
+  return <span ref={spanRef}>{value}</span>;
+}
 
 export default function Portfolio() {
   const headerRef  = useReveal();
@@ -72,15 +105,15 @@ export default function Portfolio() {
 
         <div className="portfolio-stats reveal" ref={statsRef}>
           <div className="stat">
-            <div className="stat-num">1</div>
+            <div className="stat-num"><CountUp target={1} duration={500} /></div>
             <div className="stat-label">Abgeschlossenes Projekt</div>
           </div>
           <div className="stat">
-            <div className="stat-num">3</div>
+            <div className="stat-num"><CountUp target={3} duration={900} /></div>
             <div className="stat-label">Entwickler im Team</div>
           </div>
           <div className="stat">
-            <div className="stat-num">∞</div>
+            <div className="stat-num infinity">∞</div>
             <div className="stat-label">Möglichkeiten</div>
           </div>
         </div>

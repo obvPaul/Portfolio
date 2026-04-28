@@ -11,6 +11,7 @@
   justify-content: space-between;
   padding-top: 80px;
   padding-bottom: 2.5rem;
+  will-change: transform, opacity;
 }
 
 /* ── Top & bottom meta bars ── */
@@ -60,7 +61,12 @@
   letter-spacing: -0.055em;
   line-height: 0.92;
   color: var(--text);
-  animation: fadeUp 0.75s ease both;
+  animation: fadeUp 0.75s ease both, gentleFloat 8s ease-in-out 1s infinite;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
 }
 
 .hero-title em {

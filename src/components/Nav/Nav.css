@@ -42,8 +42,22 @@ nav[data-scrolled="true"] {
   font-size: 0.82rem;
   font-weight: 500;
   transition: color 0.2s ease;
+  position: relative;
 }
 .nav-links a:hover { color: var(--text); }
+
+/* Underline draws in from left on hover */
+.nav-links li a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  transition: width 0.28s ease;
+}
+.nav-links li a:not(.nav-cta):hover::after { width: 100%; }
 
 .nav-cta {
   color: var(--copper) !important;
