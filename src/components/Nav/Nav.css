@@ -2,30 +2,36 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 0 2rem;
-  height: 64px;
+  padding: 0 2.5rem;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(13,13,18,0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  transition: background var(--transition);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+nav[data-scrolled="true"] {
+  background: rgba(15,13,10,0.9);
+  border-bottom-color: var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .nav-logo {
-  font-size: 1.15rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--copper), var(--purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
 }
+.nav-logo:hover { color: var(--copper); }
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 2rem;
   list-style: none;
 }
@@ -33,24 +39,18 @@ nav {
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   font-weight: 500;
-  transition: color var(--transition);
+  transition: color 0.2s ease;
 }
-
 .nav-links a:hover { color: var(--text); }
 
 .nav-cta {
-  background: linear-gradient(135deg, var(--copper), var(--purple));
-  color: #fff !important;
-  padding: 0.45rem 1.1rem;
-  border-radius: 999px;
-  font-size: 0.82rem !important;
+  color: var(--copper) !important;
   font-weight: 600 !important;
-  transition: opacity var(--transition), transform var(--transition) !important;
 }
-.nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+.nav-cta:hover { color: var(--copper-h) !important; }
 
-@media (max-width: 900px) {
+@media (max-width: 860px) {
   .nav-links { display: none; }
 }

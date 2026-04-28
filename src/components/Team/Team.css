@@ -1,76 +1,75 @@
 #team { background: var(--bg2); }
 
-.team-grid {
+.team-list { border-top: 1px solid var(--border); }
+
+.team-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+  transition: background var(--tr);
 }
 
-.team-card {
-  background: var(--glass);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
-  opacity: 0;
-  transform: translateY(30px);
+.team-row:hover { background: rgba(255,255,255,0.01); }
+
+.team-row-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.team-card.visible,
-.stagger-children.triggered .team-card {
-  opacity: 1;
-  transform: translateY(0);
+.team-num {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  min-width: 1.8rem;
+  font-variant-numeric: tabular-nums;
 }
 
-.team-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255,255,255,0.15);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
-
-.team-avatar {
-  width: 100px; height: 100px;
+.team-pip {
+  width: 38px; height: 38px;
   border-radius: 50%;
-  margin: 0 auto 1.25rem;
-  overflow: hidden;
-  position: relative;
-}
-
-.team-avatar img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.team-avatar-placeholder {
-  width: 100%; height: 100%;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  color: rgba(255,255,255,0.9);
-  letter-spacing: -0.02em;
+  color: rgba(255,255,255,0.88);
+  letter-spacing: 0.02em;
+}
+
+.team-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .team-name {
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  margin-bottom: 0.25rem;
+  color: var(--text);
   letter-spacing: -0.02em;
 }
 
 .team-role {
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   color: var(--copper);
   font-weight: 500;
-  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .team-bio {
   font-size: 0.875rem;
   color: var(--muted);
-  line-height: 1.65;
+  line-height: 1.75;
+  padding-top: 0.1rem;
+}
+
+@media (max-width: 640px) {
+  .team-row { grid-template-columns: 1fr; gap: 1rem; }
 }

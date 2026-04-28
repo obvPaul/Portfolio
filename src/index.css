@@ -1,21 +1,20 @@
 /* ─── Reset ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ─── Variables ─────────────────────────────────────────── */
+/* ─── Variables (claude.ai warm palette) ────────────────── */
 :root {
-  --bg:         #0d0d12;
-  --bg2:        #12121a;
-  --bg3:        #1a1a26;
-  --glass:      rgba(255,255,255,0.04);
-  --border:     rgba(255,255,255,0.08);
-  --copper:     #d97757;
-  --purple:     #9b72f5;
-  --pink:       #e06ba0;
-  --blue:       #6eb3f5;
-  --text:       #e8e8f0;
-  --muted:      #7a7a9a;
-  --radius:     16px;
-  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+  --bg:       #0f0d0a;
+  --bg2:      #161310;
+  --bg3:      #1e1b17;
+  --surface:  rgba(255,255,255,0.025);
+  --border:   rgba(255,255,255,0.07);
+  --border-h: rgba(255,255,255,0.14);
+  --copper:   #c97c50;
+  --copper-h: #e39167;
+  --text:     #ede8e0;
+  --muted:    #7c7068;
+  --subtle:   #26221e;
+  --tr:       0.22s ease;
 }
 
 html { scroll-behavior: smooth; }
@@ -26,144 +25,109 @@ body {
   color: var(--text);
   overflow-x: hidden;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ─── Scrollbar ─────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+::-webkit-scrollbar-thumb { background: var(--subtle); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
-
-/* ─── Background orbs ───────────────────────────────────── */
-.orb {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.12;
-  pointer-events: none;
-  z-index: 0;
-  animation: floatOrb 20s ease-in-out infinite;
-}
-.orb-1 { width: 600px; height: 600px; background: var(--copper); top: -200px; left: -200px; animation-delay: 0s; }
-.orb-2 { width: 500px; height: 500px; background: var(--purple); top: 40%; right: -200px; animation-delay: -7s; }
-.orb-3 { width: 400px; height: 400px; background: var(--pink); bottom: 10%; left: 30%; animation-delay: -14s; }
-
-@keyframes floatOrb {
-  0%,100% { transform: translate(0,0) scale(1); }
-  33%      { transform: translate(40px,-30px) scale(1.05); }
-  66%      { transform: translate(-20px,20px) scale(0.97); }
-}
-
-/* ─── Cursor glow ───────────────────────────────────────── */
-.cursor-glow {
-  position: fixed;
-  width: 300px; height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(155,114,245,0.06) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 999;
-  transform: translate(-50%,-50%);
-  transition: left 0.4s ease, top 0.4s ease;
-}
 
 /* ─── Section base ──────────────────────────────────────── */
 section {
   position: relative;
   z-index: 1;
-  padding: 6rem 2rem;
+  padding: 7rem 2.5rem;
 }
 
-.container { max-width: 1100px; margin: 0 auto; }
+.container { max-width: 1080px; margin: 0 auto; }
 
+/* ─── Section meta ──────────────────────────────────────── */
 .section-label {
-  display: inline-block;
-  font-size: 0.75rem;
+  display: block;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--copper);
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 3.8vw, 3rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 1rem;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  color: var(--text);
+  margin-bottom: 1.1rem;
 }
 
 .section-sub {
   color: var(--muted);
-  font-size: 1.05rem;
-  max-width: 520px;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  max-width: 360px;
+  line-height: 1.8;
 }
 
-.section-header { margin-bottom: 4rem; }
+.section-header { margin-bottom: 3.5rem; }
 
 /* ─── Buttons ───────────────────────────────────────────── */
 .btn-primary {
-  background: linear-gradient(135deg, var(--copper), var(--purple));
-  color: #fff;
-  border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  font-weight: 600;
+  display: inline-block;
+  background: var(--copper);
+  color: #160d06;
+  padding: 0.68rem 1.6rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: 700;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
-  transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+  letter-spacing: 0.01em;
+  transition: background var(--tr), transform var(--tr);
+  border: none;
+  font-family: inherit;
 }
-.btn-primary:hover { opacity: 0.85; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(217,119,87,0.3); }
+.btn-primary:hover { background: var(--copper-h); transform: translateY(-1px); }
 
-.btn-secondary {
-  background: var(--glass);
-  color: var(--text);
-  border: 1px solid var(--border);
-  padding: 0.8rem 2rem;
-  border-radius: 999px;
-  font-size: 0.95rem;
+.btn-ghost {
+  display: inline-block;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border-h);
+  padding: 0.68rem 1.6rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
-  backdrop-filter: blur(10px);
-  transition: background var(--transition), transform var(--transition);
+  transition: color var(--tr), border-color var(--tr);
+  font-family: inherit;
 }
-.btn-secondary:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+.btn-ghost:hover { color: var(--text); border-color: var(--muted); }
 
-/* ─── Scroll reveal ─────────────────────────────────────── */
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
+/* ─── Reveal animations ─────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 .stagger-children > * {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
-.stagger-children.triggered > *:nth-child(1)  { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
-.stagger-children.triggered > *:nth-child(2)  { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
-.stagger-children.triggered > *:nth-child(3)  { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
-.stagger-children.triggered > *:nth-child(4)  { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
-.stagger-children.triggered > *:nth-child(5)  { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
-.stagger-children.triggered > *:nth-child(6)  { opacity: 1; transform: translateY(0); transition-delay: 0.55s; }
-.stagger-children.triggered > *:nth-child(n+7){ opacity: 1; transform: translateY(0); transition-delay: 0.65s; }
+.stagger-children.triggered > *:nth-child(1)   { opacity: 1; transform: none; transition-delay: 0.04s; }
+.stagger-children.triggered > *:nth-child(2)   { opacity: 1; transform: none; transition-delay: 0.10s; }
+.stagger-children.triggered > *:nth-child(3)   { opacity: 1; transform: none; transition-delay: 0.16s; }
+.stagger-children.triggered > *:nth-child(4)   { opacity: 1; transform: none; transition-delay: 0.22s; }
+.stagger-children.triggered > *:nth-child(5)   { opacity: 1; transform: none; transition-delay: 0.28s; }
+.stagger-children.triggered > *:nth-child(6)   { opacity: 1; transform: none; transition-delay: 0.34s; }
+.stagger-children.triggered > *:nth-child(n+7) { opacity: 1; transform: none; transition-delay: 0.40s; }
 
-/* ─── Responsive base ───────────────────────────────────── */
-@media (max-width: 600px) {
-  section { padding: 4rem 1.25rem; }
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 640px) {
+  section { padding: 5rem 1.5rem; }
 }
