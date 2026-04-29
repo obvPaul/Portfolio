@@ -127,22 +127,6 @@ section {
 .stagger-children.triggered > *:nth-child(6)   { opacity: 1; transform: none; transition-delay: 0.34s; }
 .stagger-children.triggered > *:nth-child(n+7) { opacity: 1; transform: none; transition-delay: 0.40s; }
 
-/* ─── Dot grid background ───────────────────────────────── */
-.bg-dots {
-  position: fixed;
-  inset: -80px; /* oversized so parallax movement doesn't show edges */
-  background-image: radial-gradient(circle, rgba(255,255,255,0.048) 1px, transparent 1px);
-  background-size: 30px 30px;
-  pointer-events: none;
-  z-index: 0;
-  will-change: transform;
-  animation: dotBreathe 10s ease-in-out infinite;
-}
-
-@keyframes dotBreathe {
-  0%, 100% { opacity: 0.5; }
-  50%       { opacity: 1; }
-}
 
 /* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 640px) {
